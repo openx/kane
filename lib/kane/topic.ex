@@ -87,8 +87,7 @@ defmodule Kane.Topic do
   defp with_name(name), do: %__MODULE__{name: strip!(name)}
 
   defp project do
-    {:ok, project} = Goth.Config.get(:project_id)
-    project
+    Application.get_env(:kane, :project_id)
   end
 
   defp path, do: "projects/#{project}/topics"
